@@ -3,7 +3,7 @@
  * Enhanced PHP Backend for Secure Cookie Authentication
  * File: apps/core/CookieAuth.php
  */
-namespace Framework\Security;
+namespace Vireo\Framework\Security;
 
 
 class Cookie {

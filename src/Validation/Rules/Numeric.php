@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Validation\Rules;
+namespace Vireo\Framework\Validation\Rules;
 
 /**
  * Numeric Rule - Value must be numeric

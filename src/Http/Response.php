@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Http;
+namespace Vireo\Framework\Http;
 
 /**
  * Response Class

@@ -13,7 +13,7 @@
  * - Auto-finds pages in nested folders
  * - Performance-optimized with caching
  */
-namespace Framework\Http;
+namespace Vireo\Framework\Http;
 use Exception;
 
 class Router

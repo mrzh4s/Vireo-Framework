@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Validation\Rules;
+namespace Vireo\Framework\Validation\Rules;
 
 /**
  * Different Rule - Two fields must be different

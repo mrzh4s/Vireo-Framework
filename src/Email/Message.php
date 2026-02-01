@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Email;
+namespace Vireo\Framework\Email;
 
 /**
  * Email Message

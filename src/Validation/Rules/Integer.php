@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Validation\Rules;
+namespace Vireo\Framework\Validation\Rules;
 
 /**
  * Integer Rule - Value must be an integer

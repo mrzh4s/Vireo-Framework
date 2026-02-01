@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Validation\Rules;
+namespace Vireo\Framework\Validation\Rules;
 
 /**
  * String Rule - Value must be a string

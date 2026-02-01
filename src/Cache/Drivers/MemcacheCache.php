@@ -1,8 +1,8 @@
 <?php
 
-namespace Framework\Cache\Drivers;
+namespace Vireo\Framework\Cache\Drivers;
 
-use Framework\Cache\CacheInterface;
+use Vireo\Framework\Cache\CacheInterface;
 use Memcache;
 use Exception;
 

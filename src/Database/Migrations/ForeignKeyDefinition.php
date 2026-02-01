@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Database\Migrations;
+namespace Vireo\Framework\Database\Migrations;
 
 /**
  * Foreign Key Definition

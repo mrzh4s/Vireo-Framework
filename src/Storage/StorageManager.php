@@ -1,11 +1,11 @@
 <?php
 
-namespace Framework\Storage;
+namespace Vireo\Framework\Storage;
 
-use Framework\Storage\Drivers\LocalStorage;
-use Framework\Storage\Drivers\FTPStorage;
-use Framework\Storage\Drivers\SFTPStorage;
-use Framework\Storage\Drivers\S3Storage;
+use Vireo\Framework\Storage\Drivers\LocalStorage;
+use Vireo\Framework\Storage\Drivers\FTPStorage;
+use Vireo\Framework\Storage\Drivers\SFTPStorage;
+use Vireo\Framework\Storage\Drivers\S3Storage;
 use Exception;
 
 /**

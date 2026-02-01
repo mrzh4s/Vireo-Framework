@@ -17,7 +17,7 @@
  * migration('reset')         // Reset all migrations
  * migration('pending')       // Check if pending migrations exist
  */
-use Framework\Database\Migration;
+use Vireo\Framework\Database\Migration;
 
 if (!function_exists('migration')) {
     function migration($action = 'status', $data = []) {

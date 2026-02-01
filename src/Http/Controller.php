@@ -1,9 +1,9 @@
 <?php
 
-namespace Framework\Http;
+namespace Vireo\Framework\Http;
 
-use Framework\Http\Request;
-use Framework\Http\Response;
+use Vireo\Framework\Http\Request;
+use Vireo\Framework\Http\Response;
 
 /**
  * Base Controller Class

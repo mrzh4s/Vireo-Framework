@@ -1,6 +1,6 @@
 <?php
 
-use Framework\Configuration;
+use Vireo\Framework\Configuration;
 // ============== CORE CONFIGURATION FUNCTIONS ==============
 
 if (!function_exists('config')) {

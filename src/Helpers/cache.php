@@ -5,8 +5,8 @@
  * Convenient functions for accessing the cache system throughout the application.
  */
 
-use Framework\Cache\Cache;
-use Framework\Cache\CacheInterface;
+use Vireo\Framework\Cache\Cache;
+use Vireo\Framework\Cache\CacheInterface;
 
 if (!function_exists('cache')) {
     /**

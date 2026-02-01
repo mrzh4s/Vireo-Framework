@@ -5,7 +5,7 @@
  *
  * Global helper functions for Inertia.js integration
  */
-use Framework\View\Inertia;
+use Vireo\Framework\View\Inertia;
 
 if (!function_exists('inertia')) {
     /**

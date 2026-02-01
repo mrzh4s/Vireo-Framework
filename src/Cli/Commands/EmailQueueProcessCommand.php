@@ -1,9 +1,9 @@
 <?php
 
-namespace Framework\Cli\Commands;
+namespace Vireo\Framework\Cli\Commands;
 
-use Framework\Cli\Command;
-use Framework\Email\Queue\EmailQueue;
+use Vireo\Framework\Cli\Command;
+use Vireo\Framework\Email\Queue\EmailQueue;
 
 /**
  * Email Queue Process Command

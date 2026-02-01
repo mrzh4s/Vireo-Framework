@@ -1,9 +1,9 @@
 <?php
 
-namespace Framework\Cli\Commands;
+namespace Vireo\Framework\Cli\Commands;
 
-use Framework\Cli\Command;
-use Framework\Database\Migration;
+use Vireo\Framework\Cli\Command;
+use Vireo\Framework\Database\Migration;
 
 /**
  * MigrateStatusCommand - Show migration status

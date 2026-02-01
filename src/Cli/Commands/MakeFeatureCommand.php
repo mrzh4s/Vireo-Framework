@@ -1,8 +1,8 @@
 <?php
 
-namespace Framework\Cli\Commands;
+namespace Vireo\Framework\Cli\Commands;
 
-use Framework\Cli\Command;
+use Vireo\Framework\Cli\Command;
 
 /**
  * MakeFeatureCommand - Generate a new feature slice
@@ -77,7 +77,7 @@ class MakeFeatureCommand extends Command
  * {$name} Feature Routes
  */
 
-use Framework\Http\Router;
+use Vireo\Framework\Http\Router;
 
 // Define your routes here
 // Router::get('/{$name}', YourController::class);

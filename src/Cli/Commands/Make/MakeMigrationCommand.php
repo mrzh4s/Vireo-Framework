@@ -1,9 +1,9 @@
 <?php
 
-namespace Framework\Cli\Commands\Make;
+namespace Vireo\Framework\Cli\Commands\Make;
 
-use Framework\Cli\Command;
-use Framework\Database\Migrations\MigrationCreator;
+use Vireo\Framework\Cli\Command;
+use Vireo\Framework\Database\Migrations\MigrationCreator;
 
 /**
  * Make Migration Command

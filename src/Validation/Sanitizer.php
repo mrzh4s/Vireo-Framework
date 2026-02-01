@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Validation;
+namespace Vireo\Framework\Validation;
 
 /**
  * Sanitizer - Input sanitization service

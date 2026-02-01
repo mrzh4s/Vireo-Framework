@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Cli;
+namespace Vireo\Framework\Cli;
 
 /**
  * Spinner - Loading animation for indefinite operations

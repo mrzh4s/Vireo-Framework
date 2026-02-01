@@ -1,7 +1,7 @@
 <?php
 
-use Framework\Storage\Storage;
-use Framework\Storage\StorageInterface;
+use Vireo\Framework\Storage\Storage;
+use Vireo\Framework\Storage\StorageInterface;
 
 /**
  * Storage Helper Functions
@@ -342,7 +342,7 @@ if (!function_exists('file_retrieve')) {
 
 // ============== FTP CONNECTION HELPERS ==============
 
-use Framework\Storage\Connections\FTPConnection;
+use Vireo\Framework\Storage\Connections\FTPConnection;
 
 /**
  * Get FTP connection

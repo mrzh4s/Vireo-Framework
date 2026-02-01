@@ -1,8 +1,8 @@
 <?php
 
-namespace Framework\Logging\Handlers;
+namespace Vireo\Framework\Logging\Handlers;
 
-use Framework\Logging\LogLevel;
+use Vireo\Framework\Logging\LogLevel;
 
 /**
  * Syslog Handler

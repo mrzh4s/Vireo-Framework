@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Cli;
+namespace Vireo\Framework\Cli;
 
 /**
  * ArgumentParser - Command signature parser and validator

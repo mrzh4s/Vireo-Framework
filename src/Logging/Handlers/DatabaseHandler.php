@@ -1,8 +1,8 @@
 <?php
 
-namespace Framework\Logging\Handlers;
+namespace Vireo\Framework\Logging\Handlers;
 
-use Framework\Database\DB;
+use Vireo\Framework\Database\DB;
 use Exception;
 
 /**

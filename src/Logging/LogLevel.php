@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Logging;
+namespace Vireo\Framework\Logging;
 
 /**
  * Log Levels (PSR-3 Compatible)

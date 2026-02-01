@@ -1,8 +1,8 @@
 <?php
 
-namespace Framework\Email\Template;
+namespace Vireo\Framework\Email\Template;
 
-use Framework\View\Blade;
+use Vireo\Framework\View\Blade;
 
 /**
  * Template Engine

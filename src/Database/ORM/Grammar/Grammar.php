@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Database\ORM\Grammar;
+namespace Vireo\Framework\Database\ORM\Grammar;
 
 /**
  * Abstract base class for database-specific SQL generation

@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Validation;
+namespace Vireo\Framework\Validation;
 
 use Exception;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Framework\Email\Transports;
+namespace Vireo\Framework\Email\Transports;
 
-use Framework\Email\Message;
+use Vireo\Framework\Email\Message;
 use Symfony\Component\Mailer\Mailer as SymfonyMailer;
 use Symfony\Component\Mailer\Transport;
 use Symfony\Component\Mime\Email as SymfonyEmail;

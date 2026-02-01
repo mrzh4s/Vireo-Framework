@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Logging\Handlers;
+namespace Vireo\Framework\Logging\Handlers;
 
 use DateTime;
 

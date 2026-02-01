@@ -1,9 +1,9 @@
 <?php
 
-namespace Framework\Database\Seeds;
+namespace Vireo\Framework\Database\Seeds;
 
-use Framework\Database\DB;
-use Framework\Database\ORM\QueryBuilder;
+use Vireo\Framework\Database\DB;
+use Vireo\Framework\Database\ORM\QueryBuilder;
 use PDO;
 
 /**

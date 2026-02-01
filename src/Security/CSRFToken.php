@@ -3,7 +3,7 @@
  * Security Class for CSRF Protection and Security Helpers
  * File: apps/core/Security.php
  */
-namespace Framework\Security;
+namespace Vireo\Framework\Security;
 
 class CSRFToken {
     

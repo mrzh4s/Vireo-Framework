@@ -1,12 +1,12 @@
 <?php
 
-namespace Framework\Database\ORM;
+namespace Vireo\Framework\Database\ORM;
 
-use Framework\Database\ORM\Grammar\Grammar;
-use Framework\Database\ORM\Grammar\PostgresGrammar;
-use Framework\Database\ORM\Grammar\MySQLGrammar;
-use Framework\Database\ORM\Grammar\SQLiteGrammar;
-use Framework\Database\DB;
+use Vireo\Framework\Database\ORM\Grammar\Grammar;
+use Vireo\Framework\Database\ORM\Grammar\PostgresGrammar;
+use Vireo\Framework\Database\ORM\Grammar\MySQLGrammar;
+use Vireo\Framework\Database\ORM\Grammar\SQLiteGrammar;
+use Vireo\Framework\Database\DB;
 use PDO;
 use PDOStatement;
 

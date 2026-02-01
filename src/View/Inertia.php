@@ -17,7 +17,7 @@
  *   return Inertia::render('Dashboard', ['users' => $users]);
  */
 
-namespace Framework\View;
+namespace Vireo\Framework\View;
 use Exception;
 
 class Inertia {

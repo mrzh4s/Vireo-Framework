@@ -1,8 +1,8 @@
 <?php
 
-namespace Framework\Storage\Drivers;
+namespace Vireo\Framework\Storage\Drivers;
 
-use Framework\Storage\StorageInterface;
+use Vireo\Framework\Storage\StorageInterface;
 use Exception;
 
 /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Cli;
+namespace Vireo\Framework\Cli;
 
 /**
  * ProgressBar - Progress indicator for long-running operations

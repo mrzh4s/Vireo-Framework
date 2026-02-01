@@ -1,6 +1,6 @@
 <?php
 
-use Framework\Security\CSRFToken;
+use Vireo\Framework\Security\CSRFToken;
 /**
  * CSRF Helper Functions - Add these to your global helpers
  */

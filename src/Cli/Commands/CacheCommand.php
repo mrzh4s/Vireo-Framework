@@ -1,9 +1,9 @@
 <?php
 
-namespace Framework\Cli\Commands;
+namespace Vireo\Framework\Cli\Commands;
 
-use Framework\Cli\Command;
-use Framework\Cache\CacheManager;
+use Vireo\Framework\Cli\Command;
+use Vireo\Framework\Cache\CacheManager;
 
 /**
  * CacheCommand - Cache management CLI command

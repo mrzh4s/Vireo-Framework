@@ -4,8 +4,8 @@
  * Global helper functions for permissions
  */
 
-use Framework\Security\Permission;
-use Framework\Http\Session;
+use Vireo\Framework\Security\Permission;
+use Vireo\Framework\Http\Session;
 
 if (!function_exists('can')) {
     /**

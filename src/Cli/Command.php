@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Cli;
+namespace Vireo\Framework\Cli;
 
 /**
  * Command - Abstract base class for all CLI commands

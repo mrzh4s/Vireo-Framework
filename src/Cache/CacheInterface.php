@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Cache;
+namespace Vireo\Framework\Cache;
 
 /**
  * CacheInterface - PSR-16 Simple Cache compatible interface

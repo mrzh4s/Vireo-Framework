@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Email\Tracking;
+namespace Vireo\Framework\Email\Tracking;
 
 /**
  * Email Tracker

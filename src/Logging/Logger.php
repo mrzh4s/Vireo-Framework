@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Logging;
+namespace Vireo\Framework\Logging;
 
 use Exception;
 

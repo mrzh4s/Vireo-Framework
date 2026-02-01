@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Database\Migrations;
+namespace Vireo\Framework\Database\Migrations;
 
 use Exception;
 
@@ -136,9 +136,9 @@ class MigrationCreator
         return <<<'PHP'
 <?php
 
-use Framework\Database\Migrations\Migration;
-use Framework\Database\Migrations\Schema;
-use Framework\Database\Migrations\Blueprint;
+use Vireo\Framework\Database\Migrations\Migration;
+use Vireo\Framework\Database\Migrations\Schema;
+use Vireo\Framework\Database\Migrations\Blueprint;
 
 /**
  * Migration: {{class}}
@@ -172,9 +172,9 @@ PHP;
         return <<<'PHP'
 <?php
 
-use Framework\Database\Migrations\Migration;
-use Framework\Database\Migrations\Schema;
-use Framework\Database\Migrations\Blueprint;
+use Vireo\Framework\Database\Migrations\Migration;
+use Vireo\Framework\Database\Migrations\Schema;
+use Vireo\Framework\Database\Migrations\Blueprint;
 
 /**
  * Migration: {{class}}
@@ -211,9 +211,9 @@ PHP;
         return <<<'PHP'
 <?php
 
-use Framework\Database\Migrations\Migration;
-use Framework\Database\Migrations\Schema;
-use Framework\Database\Migrations\Blueprint;
+use Vireo\Framework\Database\Migrations\Migration;
+use Vireo\Framework\Database\Migrations\Schema;
+use Vireo\Framework\Database\Migrations\Blueprint;
 
 /**
  * Migration: {{class}}

@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Cache;
+namespace Vireo\Framework\Cache;
 
 /**
  * Cache - Static facade for cache access

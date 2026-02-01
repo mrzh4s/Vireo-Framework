@@ -10,11 +10,35 @@
  * - Uses PSR-4 autoloading for Features and other components
  */
 
-namespace Framework;
+namespace Vireo\Framework;
+
 use Exception;
-use Framework\Database\Migration;
-use Framework\View\Blade;
-use Framework\View\Inertia;
+use Vireo\Framework\Database\Migration;
+use Vireo\Framework\View\Blade;
+use Vireo\Framework\View\Inertia;
+
+/**
+ * Define ROOT_PATH if not already defined by the application.
+ * ROOT_PATH should point to the application's root directory.
+ *
+ * Detection order:
+ * 1. Already defined by application (preferred)
+ * 2. Auto-detect from vendor directory structure
+ * 3. Fall back to current working directory
+ */
+if (!defined('ROOT_PATH')) {
+    // Try to detect from vendor directory (package installed via Composer)
+    $vendorDir = dirname(__DIR__, 4); // Go up from src/Bootstrap.php -> vireo/framework -> vendor -> app root
+    if (file_exists($vendorDir . '/vendor/autoload.php')) {
+        define('ROOT_PATH', $vendorDir);
+    } elseif (file_exists(dirname(__DIR__, 2) . '/vendor/autoload.php')) {
+        // Framework is at root level (development mode)
+        define('ROOT_PATH', dirname(__DIR__, 2));
+    } else {
+        // Fall back to current working directory
+        define('ROOT_PATH', getcwd());
+    }
+}
 
 /**
  * Bootstrap Class with Namespace-Aware Auto-Discovery
@@ -79,7 +103,7 @@ class Bootstrap {
             self::shareInertiaData();
 
             // Mark as loaded
-            define('POP_FRAMEWORK_LOADED', true);
+            define('VIREO_FRAMEWORK_LOADED', true);
 
             // Log bootstrap status if debug mode is enabled
             $isDebug = (function_exists('env') && env('APP_DEBUG') === 'true');
@@ -267,7 +291,7 @@ class Bootstrap {
      */
     private static function initializeFramework() {
         // Configuration handles core system initialization
-        if (class_exists('Framework\Configuration')) {
+        if (class_exists('Vireo\Framework\Configuration')) {
             Configuration::getInstance();
         }
     }
@@ -276,7 +300,7 @@ class Bootstrap {
      * Run automatic database migrations
      */
     private static function runAutoMigrations() {
-        if (!class_exists('Framework\Database\Migration')) {
+        if (!class_exists('Vireo\Framework\Database\Migration')) {
             return;
         }
 
@@ -294,7 +318,7 @@ class Bootstrap {
      * Initialize ViewEngine with framework context
      */
     private static function initializeViewEngine() {
-        if (!class_exists('Framework\View\Blade')) {
+        if (!class_exists('Vireo\Framework\View\Blade')) {
             return;
         }
 
@@ -323,7 +347,7 @@ class Bootstrap {
      * Share global data with Inertia
      */
     private static function shareInertiaData() {
-        if (!class_exists('Framework\View\Inertia')) {
+        if (!class_exists('Vireo\Framework\View\Inertia')) {
             return;
         }
 
@@ -381,7 +405,7 @@ class Bootstrap {
             echo "<p><strong>Error:</strong> " . htmlspecialchars($e->getMessage()) . "</p>";
             echo "<p><strong>File:</strong> " . $e->getFile() . ":" . $e->getLine() . "</p>";
             echo "<p><strong>Loaded Helpers:</strong> " . implode(', ', self::$loadedHelpers) . "</p>";
-            echo "<p><strong>Configuration Status:</strong> " . (class_exists('Framework\Configuration') ? 'Available' : 'Not Available') . "</p>";
+            echo "<p><strong>Configuration Status:</strong> " . (class_exists('Vireo\Framework\Configuration') ? 'Available' : 'Not Available') . "</p>";
             echo "<pre>" . htmlspecialchars($e->getTraceAsString()) . "</pre>";
             echo "</div>";
         } else {
@@ -404,12 +428,12 @@ class Bootstrap {
      */
     public static function getStatus() {
         return [
-            'loaded' => \defined('POP_FRAMEWORK_LOADED'),
+            'loaded' => \defined('VIREO_FRAMEWORK_LOADED'),
             'helpers_loaded' => self::$loadedHelpers,
             'counts' => [
                 'helpers' => \count(self::$loadedHelpers),
             ],
-            'configuration_ready' => class_exists('Framework\Configuration'),
+            'configuration_ready' => class_exists('Vireo\Framework\Configuration'),
             'critical_helpers_available' => [
                 'config' => function_exists('config'),
                 'session' => function_exists('session'),
@@ -442,7 +466,7 @@ if (!function_exists('framework_ready')) {
      * Check if Vireo framework is ready
      */
     function framework_ready() {
-        return \defined('POP_FRAMEWORK_LOADED');
+        return \defined('VIREO_FRAMEWORK_LOADED');
     }
 }
 
@@ -451,7 +475,7 @@ if (!function_exists('framework_status')) {
      * Get comprehensive bootstrap status
      */
     function framework_status() {
-        return \Framework\Bootstrap::getStatus();
+        return \Vireo\Framework\Bootstrap::getStatus();
     }
 }
 
@@ -460,6 +484,6 @@ if (!function_exists('framework_has_helper')) {
      * Check if specific helper is loaded
      */
     function framework_has_helper($helperName) {
-        return \Framework\Bootstrap::hasHelper($helperName);
+        return \Vireo\Framework\Bootstrap::hasHelper($helperName);
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace Framework\Cli\Commands;
+namespace Vireo\Framework\Cli\Commands;
 
-use Framework\Cli\Command;
-use Framework\Cli\Console;
+use Vireo\Framework\Cli\Command;
+use Vireo\Framework\Cli\Console;
 
 /**
  * ListCommand - Display all available commands

@@ -1,12 +1,12 @@
 <?php
 
-namespace Framework\Database\Migrations;
+namespace Vireo\Framework\Database\Migrations;
 
-use Framework\Database\Migrations\Grammars\SchemaGrammar;
-use Framework\Database\Migrations\Grammars\PostgresSchemaGrammar;
-use Framework\Database\Migrations\Grammars\MySQLSchemaGrammar;
-use Framework\Database\Migrations\Grammars\SQLiteSchemaGrammar;
-use Framework\Database\DB;
+use Vireo\Framework\Database\Migrations\Grammars\SchemaGrammar;
+use Vireo\Framework\Database\Migrations\Grammars\PostgresSchemaGrammar;
+use Vireo\Framework\Database\Migrations\Grammars\MySQLSchemaGrammar;
+use Vireo\Framework\Database\Migrations\Grammars\SQLiteSchemaGrammar;
+use Vireo\Framework\Database\DB;
 use PDO;
 
 /**

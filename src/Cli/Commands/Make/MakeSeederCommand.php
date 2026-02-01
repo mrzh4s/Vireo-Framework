@@ -1,8 +1,8 @@
 <?php
 
-namespace Framework\Cli\Commands\Make;
+namespace Vireo\Framework\Cli\Commands\Make;
 
-use Framework\Cli\Command;
+use Vireo\Framework\Cli\Command;
 
 /**
  * Make Seeder Command
@@ -72,7 +72,7 @@ class MakeSeederCommand extends Command
         return <<<PHP
 <?php
 
-use Framework\Database\Seeds\Seeder;
+use Vireo\Framework\Database\Seeds\Seeder;
 
 /**
  * {$name}

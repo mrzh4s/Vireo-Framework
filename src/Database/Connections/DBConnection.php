@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Database\Connections;
+namespace Vireo\Framework\Database\Connections;
 use Exception;
 use PDO;
 use PDOException;

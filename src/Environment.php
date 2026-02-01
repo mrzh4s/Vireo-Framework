@@ -6,7 +6,7 @@
  * Handles loading and parsing of .env files and environment variables
  */
 
-namespace Framework;
+namespace Vireo\Framework;
 
 class Environment {
     private static $instance = null;

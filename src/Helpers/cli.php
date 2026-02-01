@@ -10,11 +10,11 @@ if (!function_exists('console')) {
     /**
      * Get Console instance
      *
-     * @return \Framework\Cli\Console
+     * @return \Vireo\Framework\Cli\Console
      */
-    function console(): \Framework\Cli\Console
+    function console(): \Vireo\Framework\Cli\Console
     {
-        return \Framework\Cli\Console::getInstance();
+        return \Vireo\Framework\Cli\Console::getInstance();
     }
 }
 
@@ -22,11 +22,11 @@ if (!function_exists('cli_output')) {
     /**
      * Create a new Output instance
      *
-     * @return \Framework\Cli\Output
+     * @return \Vireo\Framework\Cli\Output
      */
-    function cli_output(): \Framework\Cli\Output
+    function cli_output(): \Vireo\Framework\Cli\Output
     {
-        return new \Framework\Cli\Output();
+        return new \Vireo\Framework\Cli\Output();
     }
 }
 
@@ -40,7 +40,7 @@ if (!function_exists('cli_color')) {
      */
     function cli_color(string $text, string $color): string
     {
-        $colorObj = new \Framework\Cli\Color();
+        $colorObj = new \Vireo\Framework\Cli\Color();
         $method = $color;
 
         if (method_exists($colorObj, $method)) {
@@ -62,7 +62,7 @@ if (!function_exists('cli_ask')) {
     function cli_ask(string $question, ?string $default = null): string
     {
         $output = cli_output();
-        $questionObj = new \Framework\Cli\Question($output);
+        $questionObj = new \Vireo\Framework\Cli\Question($output);
         return $questionObj->ask($question, $default);
     }
 }
@@ -78,7 +78,7 @@ if (!function_exists('cli_confirm')) {
     function cli_confirm(string $question, bool $default = false): bool
     {
         $output = cli_output();
-        $questionObj = new \Framework\Cli\Question($output);
+        $questionObj = new \Vireo\Framework\Cli\Question($output);
         return $questionObj->confirm($question, $default);
     }
 }
@@ -95,7 +95,7 @@ if (!function_exists('cli_choice')) {
     function cli_choice(string $question, array $choices, mixed $default = null): string
     {
         $output = cli_output();
-        $questionObj = new \Framework\Cli\Question($output);
+        $questionObj = new \Vireo\Framework\Cli\Question($output);
         return $questionObj->choice($question, $choices, $default);
     }
 }

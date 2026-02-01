@@ -1,8 +1,8 @@
 <?php
 
-namespace Framework\Cli\Commands;
+namespace Vireo\Framework\Cli\Commands;
 
-use Framework\Cli\Command;
+use Vireo\Framework\Cli\Command;
 
 /**
  * MakeMiddlewareCommand - Generate a new middleware class
@@ -92,8 +92,8 @@ class MakeMiddlewareCommand extends Command
 
 namespace {$namespace};
 
-use Framework\Http\Request;
-use Framework\Http\Response;
+use Vireo\Framework\Http\Request;
+use Vireo\Framework\Http\Response;
 
 /**
  * {$className} - Middleware description

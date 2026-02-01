@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Database\ORM;
+namespace Vireo\Framework\Database\ORM;
 
 /**
  * Spatial Query Builder

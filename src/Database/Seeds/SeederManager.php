@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Database\Seeds;
+namespace Vireo\Framework\Database\Seeds;
 
 use Exception;
 

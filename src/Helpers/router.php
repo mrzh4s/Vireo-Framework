@@ -18,7 +18,7 @@
  * request('email', 'default@example.com') // With default value
  */
 
-use Framework\Http\Router;
+use Vireo\Framework\Http\Router;
 
 function request($key = null, $default = null) {
     $router = Router::getRouter();

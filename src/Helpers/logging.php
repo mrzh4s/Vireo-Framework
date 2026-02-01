@@ -1,6 +1,6 @@
 <?php
 
-use Framework\Logging\Logger;
+use Vireo\Framework\Logging\Logger;
 
 /**
  * Logging Helper Functions

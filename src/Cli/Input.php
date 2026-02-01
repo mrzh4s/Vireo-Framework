@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Cli;
+namespace Vireo\Framework\Cli;
 
 /**
  * Input - Command-line argument parser

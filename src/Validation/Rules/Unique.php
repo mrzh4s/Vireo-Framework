@@ -1,8 +1,8 @@
 <?php
 
-namespace Framework\Validation\Rules;
+namespace Vireo\Framework\Validation\Rules;
 
-use Framework\Database\DB;
+use Vireo\Framework\Database\DB;
 use Exception;
 
 /**

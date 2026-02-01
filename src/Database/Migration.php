@@ -12,10 +12,10 @@
  * - Auto-discovery from both directories
  * - Backward compatible with legacy SQL migrations
  */
-namespace Framework\Database;
+namespace Vireo\Framework\Database;
 
-use Framework\Database\DB;
-use Framework\Database\Migrations\Schema;
+use Vireo\Framework\Database\DB;
+use Vireo\Framework\Database\Migrations\Schema;
 use Exception;
 use PDO;
 

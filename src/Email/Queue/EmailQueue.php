@@ -1,9 +1,9 @@
 <?php
 
-namespace Framework\Email\Queue;
+namespace Vireo\Framework\Email\Queue;
 
-use Framework\Email\Message;
-use Framework\Email\Mailer;
+use Vireo\Framework\Email\Message;
+use Vireo\Framework\Email\Mailer;
 
 /**
  * Email Queue

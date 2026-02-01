@@ -7,7 +7,7 @@
  * Session-specific helper functions that work only with the Session class
  */
 
-use Framework\Http\Session;
+use Vireo\Framework\Http\Session;
 
 // ============== CORE SESSION HELPERS ==============
 

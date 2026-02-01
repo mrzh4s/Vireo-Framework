@@ -12,9 +12,9 @@
  * - Custom permission rules
  * - Backward compatible
  */
-namespace Framework\Security;
-use Framework\Database\DB;
-use Framework\Http\Session;
+namespace Vireo\Framework\Security;
+use Vireo\Framework\Database\DB;
+use Vireo\Framework\Http\Session;
 use Exception;
 
 class Permission {

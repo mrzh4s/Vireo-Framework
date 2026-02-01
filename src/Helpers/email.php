@@ -1,8 +1,8 @@
 <?php
 
-use Framework\Email\Email;
-use Framework\Email\Message;
-use Framework\Email\Queue\EmailQueue;
+use Vireo\Framework\Email\Email;
+use Vireo\Framework\Email\Message;
+use Vireo\Framework\Email\Queue\EmailQueue;
 
 if (!function_exists('email')) {
     /**

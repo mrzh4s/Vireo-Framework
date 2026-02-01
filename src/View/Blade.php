@@ -1,5 +1,5 @@
 <?php
-namespace Framework\View;
+namespace Vireo\Framework\View;
 use Exception;
 
 class Blade {
@@ -124,7 +124,7 @@ class Blade {
         if (!function_exists('{$functionName}')) {
             function {$functionName}(\$component, \$data = []) {
                 try {
-                    return \Framework\View\Blade::getInstance()->renderComponent('{$componentType}', \$component, \$data);
+                    return \Vireo\Framework\View\Blade::getInstance()->renderComponent('{$componentType}', \$component, \$data);
                 } catch (Exception \$e) {
                     return '<!-- Component Error (' . '{$componentType}' . '): ' . \$e->getMessage() . ' -->';
                 }

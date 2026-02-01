@@ -1,13 +1,13 @@
 <?php
 
-namespace Framework\Cache;
+namespace Vireo\Framework\Cache;
 
-use Framework\Cache\Drivers\FileCache;
-use Framework\Cache\Drivers\RedisCache;
-use Framework\Cache\Drivers\MemcachedCache;
-use Framework\Cache\Drivers\MemcacheCache;
-use Framework\Cache\Drivers\ArrayCache;
-use Framework\Cache\Drivers\DatabaseCache;
+use Vireo\Framework\Cache\Drivers\FileCache;
+use Vireo\Framework\Cache\Drivers\RedisCache;
+use Vireo\Framework\Cache\Drivers\MemcachedCache;
+use Vireo\Framework\Cache\Drivers\MemcacheCache;
+use Vireo\Framework\Cache\Drivers\ArrayCache;
+use Vireo\Framework\Cache\Drivers\DatabaseCache;
 use Exception;
 
 /**

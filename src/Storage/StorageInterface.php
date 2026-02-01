@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Storage;
+namespace Vireo\Framework\Storage;
 
 /**
  * Storage Interface

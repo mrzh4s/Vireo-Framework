@@ -12,8 +12,8 @@
  * - Backward compatible with legacy code
  */
 
-namespace Framework\Database;
-use Framework\Database\Connections\DBConnection;
+namespace Vireo\Framework\Database;
+use Vireo\Framework\Database\Connections\DBConnection;
 use Exception;
 
 // ============== ENHANCED DB HELPER CLASS ==============

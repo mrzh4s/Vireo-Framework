@@ -7,9 +7,9 @@
  * Enhanced with app helper functions to replace System.php
  * Fixed: Removed duplicate env() function to avoid conflicts
  */
-namespace Framework;
-use Framework\Environment;
-use Framework\Http\Session;
+namespace Vireo\Framework;
+use Vireo\Framework\Environment;
+use Vireo\Framework\Http\Session;
 
 class Configuration {
     private static $instance = null;

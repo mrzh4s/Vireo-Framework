@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Cache\SessionHandlers;
+namespace Vireo\Framework\Cache\SessionHandlers;
 
 use SessionHandlerInterface;
 use PDO;

@@ -1,9 +1,9 @@
 <?php
 
-namespace Framework\Database\Migrations\Grammars;
+namespace Vireo\Framework\Database\Migrations\Grammars;
 
-use Framework\Database\Migrations\Blueprint;
-use Framework\Database\Migrations\ColumnDefinition;
+use Vireo\Framework\Database\Migrations\Blueprint;
+use Vireo\Framework\Database\Migrations\ColumnDefinition;
 
 /**
  * MySQL Schema Grammar

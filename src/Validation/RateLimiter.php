@@ -1,9 +1,9 @@
 <?php
 
-namespace Framework\Validation;
+namespace Vireo\Framework\Validation;
 
-use Framework\Cache\CacheManager;
-use Framework\Cache\CacheInterface;
+use Vireo\Framework\Cache\CacheManager;
+use Vireo\Framework\Cache\CacheInterface;
 use Exception;
 
 /**

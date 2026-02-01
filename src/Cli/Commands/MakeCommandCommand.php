@@ -1,8 +1,8 @@
 <?php
 
-namespace Framework\Cli\Commands;
+namespace Vireo\Framework\Cli\Commands;
 
-use Framework\Cli\Command;
+use Vireo\Framework\Cli\Command;
 
 /**
  * MakeCommandCommand - Generate a new command class
@@ -99,7 +99,7 @@ class MakeCommandCommand extends Command
 
 namespace {$namespace};
 
-use Framework\Cli\Command;
+use Vireo\Framework\Cli\Command;
 
 /**
  * {$className} - Command description

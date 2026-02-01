@@ -1,6 +1,6 @@
 <?php
 
-use Framework\Database\Migrations\Schema;
+use Vireo\Framework\Database\Migrations\Schema;
 
 if (!function_exists('schema')) {
     /**

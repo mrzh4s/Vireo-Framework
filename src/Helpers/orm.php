@@ -1,8 +1,8 @@
 <?php
 
-use Framework\Database\ORM\QueryBuilder;
-use Framework\Database\ORM\SpatialQueryBuilder;
-use Framework\Database\ORM\Collection;
+use Vireo\Framework\Database\ORM\QueryBuilder;
+use Vireo\Framework\Database\ORM\SpatialQueryBuilder;
+use Vireo\Framework\Database\ORM\Collection;
 
 if (!function_exists('query')) {
     /**

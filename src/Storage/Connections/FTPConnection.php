@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Storage\Connections;
+namespace Vireo\Framework\Storage\Connections;
 use Exception;
 
 /**

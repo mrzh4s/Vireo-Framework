@@ -1,9 +1,9 @@
 <?php
 
-namespace Framework\Cli\Commands\Migrate;
+namespace Vireo\Framework\Cli\Commands\Migrate;
 
-use Framework\Cli\Command;
-use Framework\Database\Migrations\MigrationManager;
+use Vireo\Framework\Cli\Command;
+use Vireo\Framework\Database\Migrations\MigrationManager;
 
 /**
  * Migrate Fresh Command

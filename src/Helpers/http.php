@@ -1,6 +1,6 @@
 <?php
 
-use Framework\Http\Curl;
+use Vireo\Framework\Http\Curl;
 // ============== CURL HELPER FUNCTIONS ==============
 
 /**

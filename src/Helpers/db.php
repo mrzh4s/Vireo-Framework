@@ -1,6 +1,6 @@
 <?php
 
-use Framework\Database\DB;
+use Vireo\Framework\Database\DB;
 /**
  * Database Connection Helper Functions
  * File: apps/core/helpers/connection.php

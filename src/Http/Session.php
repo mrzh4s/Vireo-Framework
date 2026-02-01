@@ -5,7 +5,7 @@
  * 
  * Handles session management with dot notation, security features, and database tracking
  */
-namespace Framework\Http;
+namespace Vireo\Framework\Http;
 
 class Session {
     private static $instance = null;
@@ -127,10 +127,10 @@ class Session {
         $config = array_merge($this->config, $this->loadDriverConfig($driver));
 
         return match ($driver) {
-            'redis' => new \Framework\Cache\SessionHandlers\RedisSessionHandler($config),
-            'memcached' => new \Framework\Cache\SessionHandlers\MemcachedSessionHandler($config),
-            'memcache' => new \Framework\Cache\SessionHandlers\MemcacheSessionHandler($config),
-            'database' => new \Framework\Cache\SessionHandlers\DatabaseSessionHandler($config),
+            'redis' => new \Vireo\Framework\Cache\SessionHandlers\RedisSessionHandler($config),
+            'memcached' => new \Vireo\Framework\Cache\SessionHandlers\MemcachedSessionHandler($config),
+            'memcache' => new \Vireo\Framework\Cache\SessionHandlers\MemcacheSessionHandler($config),
+            'database' => new \Vireo\Framework\Cache\SessionHandlers\DatabaseSessionHandler($config),
             default => throw new \Exception("Unsupported session driver: {$driver}"),
         };
     }

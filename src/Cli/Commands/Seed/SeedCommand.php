@@ -1,9 +1,9 @@
 <?php
 
-namespace Framework\Cli\Commands\Seed;
+namespace Vireo\Framework\Cli\Commands\Seed;
 
-use Framework\Cli\Command;
-use Framework\Database\Seeds\SeederManager;
+use Vireo\Framework\Cli\Command;
+use Vireo\Framework\Database\Seeds\SeederManager;
 
 /**
  * Seed Command

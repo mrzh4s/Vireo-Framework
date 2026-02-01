@@ -1,10 +1,10 @@
 <?php
 
-namespace Framework\Email;
+namespace Vireo\Framework\Email;
 
-use Framework\Email\Transports\SmtpTransport;
-use Framework\Email\Template\TemplateEngine;
-use Framework\Email\Tracking\Tracker;
+use Vireo\Framework\Email\Transports\SmtpTransport;
+use Vireo\Framework\Email\Template\TemplateEngine;
+use Vireo\Framework\Email\Tracking\Tracker;
 
 /**
  * Email Mailer

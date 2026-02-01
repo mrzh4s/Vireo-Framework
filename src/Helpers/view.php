@@ -1,6 +1,6 @@
 <?php
 
-use Framework\View\Blade;
+use Vireo\Framework\View\Blade;
 // ============== GLOBAL HELPER FUNCTIONS ==============
 
 /**

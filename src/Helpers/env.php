@@ -1,6 +1,6 @@
 <?php
 
-use Framework\Environment;
+use Vireo\Framework\Environment;
 /**
  * Global helper functions for environment
  * ONLY CORE ENVIRONMENT FUNCTIONS - App functions moved to Configuration.php

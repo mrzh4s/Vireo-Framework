@@ -1,11 +1,11 @@
 <?php
 
-use Framework\Validation\Validator;
-use Framework\Validation\ValidationException;
-use Framework\Validation\ErrorBag;
-use Framework\Validation\FileValidator;
-use Framework\Validation\RateLimiter;
-use Framework\Validation\Sanitizer;
+use Vireo\Framework\Validation\Validator;
+use Vireo\Framework\Validation\ValidationException;
+use Vireo\Framework\Validation\ErrorBag;
+use Vireo\Framework\Validation\FileValidator;
+use Vireo\Framework\Validation\RateLimiter;
+use Vireo\Framework\Validation\Sanitizer;
 
 /**
  * Validation Helper Functions
