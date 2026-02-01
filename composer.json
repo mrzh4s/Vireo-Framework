@@ -58,7 +58,8 @@
             "src/Helpers/view.php",
             "src/Helpers/inertia.php",
             "src/Helpers/debug.php",
-            "src/Helpers/cli.php"
+            "src/Helpers/cli.php",
+            "src/Helpers/email.php"
         ]
     },
     "autoload-dev": {
@@ -76,5 +77,10 @@
         "sort-packages": true
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.0.x-dev"
+        }
+    }
 }
