@@ -86,7 +86,7 @@ class Console
             $command = new $commandClass();
 
             if (!($command instanceof Command)) {
-                throw new Exception("Command class must extend Framework\\Cli\\Command");
+                throw new Exception("Command class must extend Vireo\\Framework\\Cli\\Command");
             }
 
             // Inject dependencies
@@ -109,12 +109,29 @@ class Console
      */
     private function discoverCommands(): void
     {
-        // 1. Load built-in commands from Framework/Cli/Commands
-        $builtInPath = ROOT_PATH . '/Framework/Cli/Commands';
-        $this->loadCommandsFromDirectory($builtInPath, 'Framework\\Cli\\Commands');
+        // 1. Load built-in framework commands
+        // Check Composer package location first (vendor/vireo/framework/src/Cli/Commands)
+        $frameworkSrcPath = dirname(__DIR__) . '/Cli/Commands';
+        if (is_dir($frameworkSrcPath)) {
+            $this->loadCommandsFromDirectory($frameworkSrcPath, 'Vireo\\Framework\\Cli\\Commands');
+            // Also check subdirectories (Make/, Migrate/, Seed/, etc.)
+            $this->loadCommandsFromSubdirectories($frameworkSrcPath, 'Vireo\\Framework\\Cli\\Commands');
+        }
 
-        // 2. Load feature commands from Features/*/Commands
-        $featuresPath = ROOT_PATH . '/Features';
+        // 2. Legacy path: Framework/Cli/Commands (for non-Composer installations)
+        $legacyPath = (defined('ROOT_PATH') ? ROOT_PATH : getcwd()) . '/Framework/Cli/Commands';
+        if (is_dir($legacyPath)) {
+            $this->loadCommandsFromDirectory($legacyPath, 'Framework\\Cli\\Commands');
+        }
+
+        // 3. Load application commands from app/Commands
+        $appCommandsPath = (defined('ROOT_PATH') ? ROOT_PATH : getcwd()) . '/app/Commands';
+        if (is_dir($appCommandsPath)) {
+            $this->loadCommandsFromDirectory($appCommandsPath, 'App\\Commands');
+        }
+
+        // 4. Load feature commands from Features/*/Commands
+        $featuresPath = (defined('ROOT_PATH') ? ROOT_PATH : getcwd()) . '/Features';
         if (is_dir($featuresPath)) {
             $features = scandir($featuresPath);
             foreach ($features as $feature) {
@@ -129,6 +146,27 @@ class Console
         }
 
         $this->commandsDiscovered = true;
+    }
+
+    /**
+     * Load commands from subdirectories
+     *
+     * @param string $directory Parent directory path
+     * @param string $namespace Base namespace
+     * @return void
+     */
+    private function loadCommandsFromSubdirectories(string $directory, string $namespace): void
+    {
+        $subdirs = glob($directory . '/*', GLOB_ONLYDIR);
+        if ($subdirs === false) {
+            return;
+        }
+
+        foreach ($subdirs as $subdir) {
+            $subdirName = basename($subdir);
+            $subNamespace = $namespace . '\\' . $subdirName;
+            $this->loadCommandsFromDirectory($subdir, $subNamespace);
+        }
     }
 
     /**
