@@ -52,7 +52,7 @@ class MemcacheCache implements CacheInterface
         }
 
         $this->config = $config;
-        $this->prefix = $config['prefix'] ?? 'pop_cache:';
+        $this->prefix = $config['prefix'] ?? 'vireo_cache:';
         $this->defaultTtl = $config['ttl'] ?? 3600;
 
         $this->connect();

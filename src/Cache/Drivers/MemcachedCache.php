@@ -57,7 +57,7 @@ class MemcachedCache implements CacheInterface
         }
 
         $this->config = $config;
-        $this->prefix = $config['prefix'] ?? 'pop_cache:';
+        $this->prefix = $config['prefix'] ?? 'vireo_cache:';
         $this->defaultTtl = $config['ttl'] ?? 3600;
 
         $this->connect();
@@ -71,7 +71,7 @@ class MemcachedCache implements CacheInterface
      */
     private function connect(): void
     {
-        $persistentId = $this->config['persistent_id'] ?? 'pop_memcached';
+        $persistentId = $this->config['persistent_id'] ?? 'vireo_memcached';
         $this->connection = new Memcached($persistentId);
 
         // Only add servers if not using persistent connection or connection is empty

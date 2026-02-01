@@ -42,7 +42,7 @@ class MemcacheSessionHandler implements SessionHandlerInterface
         }
 
         $this->memcache = new Memcache();
-        $this->prefix = $config['prefix'] ?? 'pop_session:';
+        $this->prefix = $config['prefix'] ?? 'vireo_session:';
         $this->ttl = $config['lifetime'] ?? 7200; // 2 hours
 
         $servers = $config['servers'] ?? [

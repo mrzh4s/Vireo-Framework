@@ -42,13 +42,13 @@ class RedisSessionHandler implements SessionHandlerInterface
         }
 
         $this->redis = new Redis();
-        $this->prefix = $config['prefix'] ?? 'pop_session:';
+        $this->prefix = $config['prefix'] ?? 'vireo_session:';
         $this->ttl = $config['lifetime'] ?? 7200; // 2 hours
 
         $host = $config['host'] ?? '127.0.0.1';
         $port = $config['port'] ?? 6379;
         $persistent = $config['persistent'] ?? true;
-        $persistentId = $config['persistent_id'] ?? 'pop_session';
+        $persistentId = $config['persistent_id'] ?? 'vireo_session';
 
         // Connect to Redis
         if ($persistent) {

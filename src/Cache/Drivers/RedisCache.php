@@ -56,7 +56,7 @@ class RedisCache implements CacheInterface
         }
 
         $this->config = $config;
-        $this->prefix = $config['prefix'] ?? 'pop_cache:';
+        $this->prefix = $config['prefix'] ?? 'vireo_cache:';
         $this->defaultTtl = $config['ttl'] ?? 3600;
 
         $this->connect();
@@ -76,7 +76,7 @@ class RedisCache implements CacheInterface
         $port = $this->config['port'] ?? 6379;
         $timeout = $this->config['timeout'] ?? 0.0;
         $persistent = $this->config['persistent'] ?? true;
-        $persistentId = $this->config['persistent_id'] ?? 'pop_redis';
+        $persistentId = $this->config['persistent_id'] ?? 'vireo_redis';
 
         // Use persistent connection for better performance
         if ($persistent) {

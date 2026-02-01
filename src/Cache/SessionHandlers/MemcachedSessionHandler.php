@@ -41,10 +41,10 @@ class MemcachedSessionHandler implements SessionHandlerInterface
             throw new Exception('Memcached extension not loaded');
         }
 
-        $persistentId = $config['persistent_id'] ?? 'pop_session';
+        $persistentId = $config['persistent_id'] ?? 'vireo_session';
         $this->memcached = new Memcached($persistentId);
 
-        $this->prefix = $config['prefix'] ?? 'pop_session:';
+        $this->prefix = $config['prefix'] ?? 'vireo_session:';
         $this->ttl = $config['lifetime'] ?? 7200; // 2 hours
 
         // Only add servers if not already connected
