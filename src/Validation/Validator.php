@@ -10,7 +10,7 @@ use Exception;
  *
  * Singleton service that handles data validation against rules.
  * Supports both string ('required|email|max:255') and array formats.
- * Follows Beam Framework's singleton pattern like CSRFToken, Permission, Cookie classes.
+ * Follows Vireo Framework's singleton pattern like CSRFToken, Permission, Cookie classes.
  */
 class Validator
 {

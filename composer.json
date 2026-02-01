@@ -1,5 +1,5 @@
 {
-    "name": "beam/framework",
+    "name": "vireo/framework",
     "description": "Modern PHP framework implementing Vertical Slice Architecture with Inertia.js integration. Zero external dependencies, auto-discovery, and built-in RBAC.",
     "type": "library",
     "license": "MIT",
@@ -15,7 +15,7 @@
         "minimal",
         "rbac"
     ],
-    "homepage": "https://github.com/mrzh4s/beam-framework",
+    "homepage": "https://github.com/mrzh4s/vireo-framework",
     "authors": [
         {
             "name": "mrzh4s",
@@ -23,9 +23,9 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/mrzh4s/beam-framework/issues",
-        "source": "https://github.com/mrzh4s/beam-framework",
-        "docs": "https://github.com/mrzh4s/beam-framework#readme"
+        "issues": "https://github.com/mrzh4s/vireo-framework/issues",
+        "source": "https://github.com/mrzh4s/vireo-framework",
+        "docs": "https://github.com/mrzh4s/vireo-framework#readme"
     },
     "require": {
         "php": "^8.4",
@@ -36,7 +36,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Beam\\Framework\\": "src/"
+            "Vireo\\Framework\\": "src/"
         },
         "files": [
             "src/Helpers/env.php",
@@ -63,7 +63,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Beam\\Framework\\Tests\\": "tests/"
+            "Vireo\\Framework\\Tests\\": "tests/"
         }
     },
     "scripts": {

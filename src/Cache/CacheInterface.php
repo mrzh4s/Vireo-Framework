@@ -5,7 +5,7 @@ namespace Framework\Cache;
 /**
  * CacheInterface - PSR-16 Simple Cache compatible interface
  *
- * Defines the contract for all cache drivers in the Beam Framework.
+ * Defines the contract for all cache drivers in the Vireo Framework.
  * Supports basic operations, TTL management, atomic operations, and advanced patterns.
  */
 interface CacheInterface

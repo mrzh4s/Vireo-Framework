@@ -7,7 +7,7 @@ namespace Framework\Validation;
  *
  * Singleton service for validating uploaded files including MIME types,
  * file sizes, extensions, and image dimensions.
- * Follows Beam Framework's singleton pattern.
+ * Follows Vireo Framework's singleton pattern.
  */
 class FileValidator
 {

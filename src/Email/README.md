@@ -1,6 +1,6 @@
 # Framework Email
 
-Core email functionality for the Beam Framework. Send emails via SMTP with support for queuing, templates, attachments, and tracking.
+Core email functionality for the Vireo Framework. Send emails via SMTP with support for queuing, templates, attachments, and tracking.
 
 ## Quick Start
 
@@ -129,16 +129,16 @@ Email::to('user@example.com', 'John Doe')
 
 ```bash
 # Process once
-./beam email:queue:process
+./vireo email:queue:process
 
 # Process with custom batch size
-./beam email:queue:process --limit=50
+./vireo email:queue:process --limit=50
 
 # Run as daemon (continuous processing)
-./beam email:queue:process --daemon
+./vireo email:queue:process --daemon
 
 # Process one batch only
-./beam email:queue:process --once
+./vireo email:queue:process --once
 ```
 
 ### Helper Functions
@@ -161,7 +161,7 @@ $deleted = email_cleanup(30); // Delete emails older than 30 days
 ```ini
 [program:email-worker]
 process_name=%(program_name)s_%(process_num)02d
-command=php /path/to/beam email:queue:process --daemon
+command=php /path/to/vireo email:queue:process --daemon
 autostart=true
 autorestart=true
 user=www-data
@@ -173,7 +173,7 @@ stdout_logfile=/var/log/email-worker.log
 **Cron Job**:
 
 ```cron
-* * * * * cd /path/to/app && ./beam email:queue:process --once
+* * * * * cd /path/to/app && ./vireo email:queue:process --once
 ```
 
 ## Templates
@@ -387,7 +387,7 @@ logger('email')->error('Send failed', ['error' => 'Connection timeout']);
 Test your email configuration:
 
 ```bash
-./beam email:test your@email.com
+./vireo email:test your@email.com
 ```
 
 Check queue status:
@@ -401,9 +401,9 @@ echo "Pending emails: {$depth}";
 
 ### Emails not sending
 
-1. Check queue: `./beam email:queue:process --once`
+1. Check queue: `./vireo email:queue:process --once`
 2. Check logs: `tail -f storage/logs/email.log`
-3. Test config: `./beam email:test your@email.com`
+3. Test config: `./vireo email:test your@email.com`
 
 ### Gmail "Less secure app" error
 
@@ -426,4 +426,4 @@ Adjust in `Config/Email.php`:
 
 ## License
 
-Part of Beam Framework - MIT License
+Part of Vireo Framework - MIT License

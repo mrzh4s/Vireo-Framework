@@ -47,7 +47,7 @@ class ListCommand extends Command
         }
 
         // Formatted output
-        $this->info('Beam Framework - Available Commands');
+        $this->info('Vireo Framework - Available Commands');
         $this->newLine();
 
         // Group commands by namespace
@@ -69,7 +69,7 @@ class ListCommand extends Command
             $this->newLine();
         }
 
-        $this->info('Run "beam <command> --help" for more information on a command.');
+        $this->info('Run "vireo <command> --help" for more information on a command.');
 
         return self::SUCCESS;
     }

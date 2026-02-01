@@ -1,6 +1,6 @@
-# Contributing to Beam Framework
+# Contributing to Vireo Framework
 
-Thank you for your interest in contributing to Beam Framework! This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to Vireo Framework! This document provides guidelines and instructions for contributing.
 
 ## Code of Conduct
 
@@ -12,7 +12,7 @@ By participating in this project, you agree to maintain a respectful and inclusi
 
 Before submitting a bug report:
 
-1. Check the [GitHub Issues](https://github.com/mrzh4s/beam-framework/issues) to see if the bug has already been reported
+1. Check the [GitHub Issues](https://github.com/mrzh4s/vireo-framework/issues) to see if the bug has already been reported
 2. If not, create a new issue with the following information:
    - A clear, descriptive title
    - Steps to reproduce the issue
@@ -49,8 +49,8 @@ Feature requests are welcome! Please create an issue with:
 
 ```bash
 # Clone your fork
-git clone https://github.com/YOUR_USERNAME/beam-framework.git
-cd beam-framework
+git clone https://github.com/YOUR_USERNAME/vireo-framework.git
+cd vireo-framework
 
 # Install dependencies
 composer install
@@ -83,7 +83,7 @@ composer test:coverage
 ```php
 <?php
 
-namespace Beam\Framework\Example;
+namespace Vireo\Framework\Example;
 
 class ExampleClass
 {
@@ -221,10 +221,10 @@ if (!function_exists('my_helper')) {
 ```php
 <?php
 
-namespace Beam\Framework\Tests\Validation;
+namespace Vireo\Framework\Tests\Validation;
 
 use PHPUnit\Framework\TestCase;
-use Beam\Framework\Validation\Rules\Email;
+use Vireo\Framework\Validation\Rules\Email;
 
 class EmailRuleTest extends TestCase
 {
@@ -261,4 +261,4 @@ If you have questions about contributing, feel free to:
 - Open an issue for discussion
 - Reach out to the maintainers
 
-Thank you for contributing to Beam Framework!
+Thank you for contributing to Vireo Framework!

@@ -40,7 +40,7 @@ class DevCommand extends Command
         $phpOnly = $this->option('php-only');
 
         $this->newLine();
-        $this->info('Starting Beam Framework development environment...');
+        $this->info('Starting Vireo Framework development environment...');
         $this->newLine();
 
         // Register shutdown handler to cleanup Vite process

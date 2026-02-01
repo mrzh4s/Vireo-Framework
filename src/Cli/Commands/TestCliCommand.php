@@ -29,7 +29,7 @@ class TestCliCommand extends Command
      */
     public function handle(): int
     {
-        $this->info('Beam Framework CLI Test');
+        $this->info('Vireo Framework CLI Test');
         $this->newLine();
 
         // Test colors if requested or no specific test

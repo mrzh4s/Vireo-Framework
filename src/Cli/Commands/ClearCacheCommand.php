@@ -94,7 +94,7 @@ class ClearCacheCommand extends Command
      */
     private function clearViews(): array
     {
-        // Beam uses Blade views - clear compiled cache if it exists
+        // Vireo uses Blade views - clear compiled cache if it exists
         $cachePath = ROOT_PATH . '/storage/framework/views';
 
         if (!is_dir($cachePath)) {

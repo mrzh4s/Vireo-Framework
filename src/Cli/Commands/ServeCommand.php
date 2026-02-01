@@ -43,13 +43,13 @@ class ServeCommand extends Command
         if ($socket !== false) {
             fclose($socket);
             $this->error("Port {$port} is already in use.");
-            $this->info("Try a different port: ./beam serve --port=" . ((int)$port + 1));
+            $this->info("Try a different port: ./vireo serve --port=" . ((int)$port + 1));
             return self::FAILURE;
         }
 
         // Display server information
         $this->newLine();
-        $this->success("Beam development server started");
+        $this->success("Vireo development server started");
         $this->info("Server running at: http://{$host}:{$port}");
         $this->info("Document root: {$docRoot}");
         $this->newLine();

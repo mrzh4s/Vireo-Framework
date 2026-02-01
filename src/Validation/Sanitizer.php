@@ -6,7 +6,7 @@ namespace Framework\Validation;
  * Sanitizer - Input sanitization service
  *
  * Singleton service for sanitizing user input to prevent XSS and other attacks.
- * Follows Beam Framework's singleton pattern.
+ * Follows Vireo Framework's singleton pattern.
  */
 class Sanitizer
 {

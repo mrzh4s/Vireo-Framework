@@ -1,6 +1,6 @@
 <?php
 /**
- * Inertia.js Adapter for Beam Framework (NO COMPOSER REQUIRED)
+ * Inertia.js Adapter for Vireo Framework (NO COMPOSER REQUIRED)
  * File: apps/core/Inertia.php
  *
  * This is a lightweight implementation of Inertia.js protocol
@@ -296,7 +296,7 @@ class Inertia {
      * @return void
      */
     private static function renderDefaultTemplate($pageJson) {
-        $appName = app('name') ?? 'Beam Framework';
+        $appName = app('name') ?? 'Vireo Framework';
         $appUrl = app('url') ?? '';
         $isLocal = app('env') === 'local';
 

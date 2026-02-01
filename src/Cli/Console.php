@@ -78,7 +78,7 @@ class Console
 
             if ($commandClass === null) {
                 $this->output->error("Command not found: {$commandName}");
-                $this->output->info("Run 'beam list' to see available commands.");
+                $this->output->info("Run 'vireo list' to see available commands.");
                 return Command::INVALID;
             }
 

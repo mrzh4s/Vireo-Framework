@@ -28,7 +28,7 @@ class InspectCommand extends Command
      */
     public function handle(): int
     {
-        $this->info('Beam Framework - System Information');
+        $this->info('Vireo Framework - System Information');
         $this->newLine();
 
         // PHP Information

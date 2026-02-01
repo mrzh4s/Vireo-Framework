@@ -1,4 +1,4 @@
-# Beam Framework
+# Vireo Framework
 
 A modern PHP framework implementing **Vertical Slice Architecture** with Inertia.js integration. Zero external dependencies, auto-discovery, and built-in RBAC.
 
@@ -27,7 +27,7 @@ A modern PHP framework implementing **Vertical Slice Architecture** with Inertia
 ## Installation
 
 ```bash
-composer require beam/framework
+composer require vireo/framework
 ```
 
 ## Quick Start
@@ -142,16 +142,16 @@ if (can_any(['users.view', 'users.edit'])) {
 
 ```bash
 # Create a migration
-php beam make:migration create_users_table
+php vireo make:migration create_users_table
 
 # Run migrations
-php beam migrate
+php vireo migrate
 
 # Rollback last migration
-php beam migrate:rollback
+php vireo migrate:rollback
 
 # Fresh migration (drop all and re-run)
-php beam migrate:fresh
+php vireo migrate:fresh
 ```
 
 ```php
@@ -183,25 +183,25 @@ return new class extends Migration
 
 ```bash
 # List all commands
-php beam list
+php vireo list
 
 # Create a new feature
-php beam make:feature UserProfile
+php vireo make:feature UserProfile
 
 # Create a middleware
-php beam make:middleware AuthMiddleware
+php vireo make:middleware AuthMiddleware
 
 # Create a seeder
-php beam make:seeder UsersSeeder
+php vireo make:seeder UsersSeeder
 
 # Run seeders
-php beam db:seed
+php vireo db:seed
 
 # Start development server
-php beam serve
+php vireo serve
 
 # Clear cache
-php beam cache:clear
+php vireo cache:clear
 ```
 
 ### Configuration
@@ -340,5 +340,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-- [GitHub Issues](https://github.com/mrzh4s/beam-framework/issues)
-- [Documentation](https://github.com/mrzh4s/beam-framework#readme)
+- [GitHub Issues](https://github.com/mrzh4s/vireo-framework/issues)
+- [Documentation](https://github.com/mrzh4s/vireo-framework#readme)

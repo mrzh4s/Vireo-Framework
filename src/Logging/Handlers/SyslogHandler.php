@@ -16,7 +16,7 @@ class SyslogHandler
 
     public function __construct(array $config)
     {
-        $this->ident = $config['ident'] ?? 'beam-framework';
+        $this->ident = $config['ident'] ?? 'vireo-framework';
         $this->facility = $config['facility'] ?? LOG_USER;
 
         openlog($this->ident, LOG_PID | LOG_ODELAY, $this->facility);

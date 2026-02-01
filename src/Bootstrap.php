@@ -1,6 +1,6 @@
 <?php
 /**
- * Beam Framework Bootstrap with Auto-Discovery
+ * Vireo Framework Bootstrap with Auto-Discovery
  * File: Framework/Bootstrap.php
  *
  * Features:
@@ -303,7 +303,7 @@ class Bootstrap {
 
             // Share global data using helper functions
             $sharedData = [
-                'app_name' => function_exists('config') ? config('app.name', 'Beam Framework') : 'Beam Framework',
+                'app_name' => function_exists('config') ? config('app.name', 'Vireo Framework') : 'Vireo Framework',
                 'app_version' => function_exists('config') ? config('app.version', '1.0.0') : '1.0.0',
                 'app_env' => function_exists('env') ? env('APP_ENV', 'production') : 'production',
                 'app_url' => function_exists('config') ? config('app.url', '') : '',
@@ -370,14 +370,14 @@ class Bootstrap {
      * Handle bootstrap errors gracefully
      */
     private static function handleBootstrapError($e) {
-        $errorMessage = "Beam Framework Bootstrap Error: " . $e->getMessage();
+        $errorMessage = "Vireo Framework Bootstrap Error: " . $e->getMessage();
 
         $debug = (function_exists('env') && env('APP_DEBUG') === 'true');
 
         if ($debug) {
             // Show detailed error in debug mode
             echo "<div style='background:#f8d7da;color:#721c24;padding:20px;margin:10px;border-radius:5px;'>";
-            echo "<h2>Beam Framework Bootstrap Error</h2>";
+            echo "<h2>Vireo Framework Bootstrap Error</h2>";
             echo "<p><strong>Error:</strong> " . htmlspecialchars($e->getMessage()) . "</p>";
             echo "<p><strong>File:</strong> " . $e->getFile() . ":" . $e->getLine() . "</p>";
             echo "<p><strong>Loaded Helpers:</strong> " . implode(', ', self::$loadedHelpers) . "</p>";
@@ -439,7 +439,7 @@ class Bootstrap {
 
 if (!function_exists('framework_ready')) {
     /**
-     * Check if Beam framework is ready
+     * Check if Vireo framework is ready
      */
     function framework_ready() {
         return \defined('POP_FRAMEWORK_LOADED');
