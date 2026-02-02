@@ -204,9 +204,12 @@ class Router
             // e.g., AuthMiddleware -> auth, GuestMiddleware -> guest
             $middlewareName = $this->deriveMiddlewareName($className);
 
-            // Try to determine the namespace from the file path
+            // Try to determine the namespace from the file
             $namespace = $this->getNamespaceFromPath($file);
             $fullClassName = $namespace . '\\' . $className;
+
+            // Include the file to ensure the class is available
+            require_once $file;
 
             // Register the middleware
             if (class_exists($fullClassName)) {
@@ -234,19 +237,20 @@ class Router
     }
 
     /**
-     * Get namespace from file path
+     * Get namespace from file path by parsing the PHP file
      */
     private function getNamespaceFromPath($filePath)
     {
-        // Normalize path
-        $filePath = str_replace(ROOT_PATH . '/', '', $filePath);
+        // Read the file and extract the namespace declaration
+        $contents = file_get_contents($filePath);
 
-        // Extract directory path
-        $dirPath = dirname($filePath);
+        if ($contents !== false && preg_match('/^\s*namespace\s+([^;]+);/m', $contents, $matches)) {
+            return trim($matches[1]);
+        }
 
-        // Convert path to namespace
-        // Infrastructure/Http/Middleware -> Infrastructure\Http\Middleware
-        // Features/Auth/Middleware -> Features\Auth\Middleware
+        // Fallback: derive namespace from path (for files without namespace)
+        $relativePath = str_replace(ROOT_PATH . '/', '', $filePath);
+        $dirPath = dirname($relativePath);
         $namespace = str_replace('/', '\\', $dirPath);
 
         return $namespace;
