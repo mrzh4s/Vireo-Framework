@@ -163,33 +163,27 @@ class Bootstrap {
     /**
      * Auto-discover and load helper files from Features directories
      *
-     * Scans feature directories in multiple locations:
-     * - yourfeatures/shared/helpers (shared helpers across all features)
-     * - yourfeatures/{feature}/helpers (individual feature helpers)
-     * - Features/{FeatureName}/Helpers (legacy uppercase format)
+     * Scans feature directories recursively to find all Helpers folders:
+     * - Features/{Feature}/Helpers (direct feature helpers)
+     * - Features/{Feature}/{SubFeature}/Helpers (e.g., Auth/Login/Helpers)
+     * - Features/{Feature}/Shared/Helpers (e.g., Auth/Shared/Helpers)
      *
-     * Feature helpers are tracked as "{Feature}:{helper}" to distinguish from framework helpers.
+     * Feature helpers are tracked as "{Feature}:{SubFeature}:{helper}" or "{Feature}:{helper}"
      */
     private static function autoDiscoverFeatureHelpers() {
-        $discoveredCount = 0;
+        $featuresPath = ROOT_PATH . '/Features';
 
-        // 1. Load shared helpers from yourfeatures/shared/helpers
-        $sharedHelpersPath = ROOT_PATH . '/yourfeatures/shared/helpers';
-        if (is_dir($sharedHelpersPath)) {
-            $discoveredCount += self::loadHelpersFromDirectory($sharedHelpersPath, 'shared');
+        // Exit early if Features directory doesn't exist
+        if (!is_dir($featuresPath)) {
+            if (self::$debug) {
+                logger('app')->debug('Features directory not found, skipping feature helper discovery', [
+                    'path' => $featuresPath
+                ]);
+            }
+            return;
         }
 
-        // 2. Load feature-specific helpers from yourfeatures/{feature}/helpers
-        $yourFeaturesPath = ROOT_PATH . '/yourfeatures';
-        if (is_dir($yourFeaturesPath)) {
-            $discoveredCount += self::scanAndLoadFeatureHelpers($yourFeaturesPath, 'helpers');
-        }
-
-        // 3. Load from legacy Features/{FeatureName}/Helpers (backward compatibility)
-        $legacyFeaturesPath = ROOT_PATH . '/Features';
-        if (is_dir($legacyFeaturesPath)) {
-            $discoveredCount += self::scanAndLoadFeatureHelpers($legacyFeaturesPath, 'Helpers');
-        }
+        $discoveredCount = self::scanNestedFeatureHelpers($featuresPath);
 
         if (self::$debug && $discoveredCount > 0) {
             logger('app')->debug('Feature helper discovery complete', [
@@ -199,17 +193,19 @@ class Bootstrap {
     }
 
     /**
-     * Scan a features directory and load helpers from each feature's helper subdirectory
+     * Recursively scan nested feature structure for Helpers directories
      *
-     * @param string $featuresPath Path to the features directory
-     * @param string $helperSubdir Name of the helper subdirectory (e.g., 'helpers' or 'Helpers')
+     * Scans: Features/{Feature}/{SubFeature}/Helpers
+     * Example: Auth/Login/Helpers, Auth/Shared/Helpers
+     *
+     * @param string $featuresPath Path to the Features directory
      * @return int Number of helpers loaded
      */
-    private static function scanAndLoadFeatureHelpers(string $featuresPath, string $helperSubdir): int {
+    private static function scanNestedFeatureHelpers(string $featuresPath): int {
         $features = @scandir($featuresPath);
 
         if ($features === false) {
-            logger('app')->warning('Failed to scan features directory', [
+            logger('app')->warning('Failed to scan Features directory', [
                 'path' => $featuresPath,
                 'error' => error_get_last()['message'] ?? 'Unknown error'
             ]);
@@ -219,8 +215,8 @@ class Bootstrap {
         $discoveredCount = 0;
 
         foreach ($features as $feature) {
-            // Skip dot directories and shared directory (handled separately)
-            if ($feature === '.' || $feature === '..' || $feature === 'shared') {
+            // Skip dot directories
+            if ($feature === '.' || $feature === '..') {
                 continue;
             }
 
@@ -231,14 +227,56 @@ class Bootstrap {
                 continue;
             }
 
-            $featureHelpersPath = $featurePath . '/' . $helperSubdir;
+            // Recursively scan subdirectories for Helpers folders
+            $discoveredCount += self::scanSubFeaturesForHelpers($featurePath, $feature);
+        }
 
-            // Skip features without helpers directory
-            if (!is_dir($featureHelpersPath)) {
+        return $discoveredCount;
+    }
+
+    /**
+     * Scan sub-features within a feature directory for Helpers folders
+     *
+     * @param string $featurePath Path to the feature directory
+     * @param string $featureName Name of the parent feature
+     * @return int Number of helpers loaded
+     */
+    private static function scanSubFeaturesForHelpers(string $featurePath, string $featureName): int {
+        $subFeatures = @scandir($featurePath);
+
+        if ($subFeatures === false) {
+            return 0;
+        }
+
+        $discoveredCount = 0;
+
+        foreach ($subFeatures as $subFeature) {
+            // Skip dot directories
+            if ($subFeature === '.' || $subFeature === '..') {
                 continue;
             }
 
-            $discoveredCount += self::loadHelpersFromDirectory($featureHelpersPath, $feature);
+            $subFeaturePath = $featurePath . '/' . $subFeature;
+
+            // Skip if not a directory
+            if (!is_dir($subFeaturePath)) {
+                continue;
+            }
+
+            // Check if this is a Helpers directory
+            if ($subFeature === 'Helpers') {
+                // Load helpers directly from Feature/Helpers
+                $trackingPrefix = $featureName;
+                $discoveredCount += self::loadHelpersFromDirectory($subFeaturePath, $trackingPrefix);
+            } else {
+                // Check if sub-feature contains a Helpers directory
+                $helpersPath = $subFeaturePath . '/Helpers';
+                if (is_dir($helpersPath)) {
+                    // Track as Feature:SubFeature
+                    $trackingPrefix = $featureName . ':' . $subFeature;
+                    $discoveredCount += self::loadHelpersFromDirectory($helpersPath, $trackingPrefix);
+                }
+            }
         }
 
         return $discoveredCount;
@@ -248,15 +286,15 @@ class Bootstrap {
      * Load all helper files from a specific directory
      *
      * @param string $helpersPath Path to the helpers directory
-     * @param string $featureName Name of the feature for tracking purposes
+     * @param string $trackingPrefix Prefix for tracking (e.g., "Feature" or "Feature:SubFeature")
      * @return int Number of helpers loaded
      */
-    private static function loadHelpersFromDirectory(string $helpersPath, string $featureName): int {
+    private static function loadHelpersFromDirectory(string $helpersPath, string $trackingPrefix): int {
         $helperFiles = glob($helpersPath . '/*.php');
 
         if ($helperFiles === false) {
             logger('app')->warning('Failed to glob helper files', [
-                'feature' => $featureName,
+                'tracking_prefix' => $trackingPrefix,
                 'path' => $helpersPath
             ]);
             return 0;
@@ -266,8 +304,8 @@ class Bootstrap {
 
         foreach ($helperFiles as $helperFile) {
             $helperName = basename($helperFile, '.php');
-            // Track as "Feature:helper" to distinguish from framework helpers
-            $trackingName = $featureName . ':' . $helperName;
+            // Track as "Feature:helper" or "Feature:SubFeature:helper"
+            $trackingName = $trackingPrefix . ':' . $helperName;
 
             // Skip if already loaded (prevent duplicates)
             if (in_array($trackingName, self::$loadedHelpers)) {
@@ -279,8 +317,7 @@ class Bootstrap {
 
             if (self::$debug) {
                 logger('app')->debug('Loaded feature helper', [
-                    'feature' => $featureName,
-                    'helper' => $helperName,
+                    'tracking_name' => $trackingName,
                     'file' => $helperFile
                 ]);
             }
