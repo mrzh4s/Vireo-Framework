@@ -58,18 +58,24 @@ abstract class Seeder
     }
 
     /**
-     * Load seeder file from Database/Seeds directory
+     * Load seeder file from Infrastructure/Persistence/Seeds directory
      */
     private function loadSeederFile(string $seederClass): void
     {
         // Get just the class name without namespace
         $className = basename(str_replace('\\', '/', $seederClass));
 
-        $seedersPath = ROOT_PATH . '/Database/Seeds';
-        $filePath = $seedersPath . '/' . $className . '.php';
+        // Try multiple seeder paths
+        $possiblePaths = [
+            ROOT_PATH . '/Infrastructure/Persistence/Seeds/' . $className . '.php',
+            ROOT_PATH . '/Database/Seeds/' . $className . '.php',
+        ];
 
-        if (file_exists($filePath)) {
-            require_once $filePath;
+        foreach ($possiblePaths as $filePath) {
+            if (file_exists($filePath)) {
+                require_once $filePath;
+                return;
+            }
         }
     }
 

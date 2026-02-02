@@ -23,7 +23,13 @@ class SeederManager
 
     public function __construct()
     {
-        $this->seedersPath = ROOT_PATH . '/Database/Seeds';
+        // Use Infrastructure/Persistence/Seeds as primary path
+        $this->seedersPath = ROOT_PATH . '/Infrastructure/Persistence/Seeds';
+
+        // Fallback to Database/Seeds if Infrastructure path doesn't exist
+        if (!is_dir($this->seedersPath)) {
+            $this->seedersPath = ROOT_PATH . '/Database/Seeds';
+        }
     }
 
     /**
