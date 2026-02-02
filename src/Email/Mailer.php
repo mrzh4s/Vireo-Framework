@@ -161,7 +161,7 @@ class Mailer
             $data['scheduled_at'] = date('Y-m-d H:i:s', time() + $delay);
         }
 
-        $emailId = table('emails_queue')->insertGetId($data);
+        $emailId = table('email.queue')->insertGetId($data);
 
         // Store attachments
         foreach ($message->getAttachments() as $attachment) {
@@ -187,7 +187,7 @@ class Mailer
             $storagePath = 'email/attachments/' . date('Y/m/d') . '/' . uniqid() . '_' . $name;
             storage('local')->putFile($storagePath, $path);
 
-            table('email_attachments')->insert([
+            table('email.attachments')->insert([
                 'email_id' => $emailId,
                 'filename' => basename($storagePath),
                 'original_filename' => $name,
@@ -205,7 +205,7 @@ class Mailer
      */
     private function markAsSent(int $emailId): void
     {
-        table('emails_queue')
+        table('email.queue')
             ->where('id', $emailId)
             ->update([
                 'status' => 'sent',
@@ -219,7 +219,7 @@ class Mailer
      */
     private function markAsFailed(int $emailId, string $error): void
     {
-        table('emails_queue')
+        table('email.queue')
             ->where('id', $emailId)
             ->update([
                 'status' => 'failed',

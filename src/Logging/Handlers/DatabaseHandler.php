@@ -17,7 +17,7 @@ class DatabaseHandler
 
     public function __construct(array $config)
     {
-        $this->table = $config['table'] ?? 'logs';
+        $this->table = $config['table'] ?? 'system.logs';
         $this->connection = $config['connection'] ?? null;
         $this->ensureLogTable();
     }

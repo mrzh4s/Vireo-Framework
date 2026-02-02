@@ -79,7 +79,7 @@ class EmailQueue
      */
     private function getPendingEmails(int $limit): array
     {
-        return table('emails_queue')
+        return table('email.queue')
             ->where('status', 'pending')
             ->where(function($query) {
                 $query->whereNull('scheduled_at')
@@ -162,7 +162,7 @@ class EmailQueue
         }
 
         // Load attachments
-        $attachments = table('email_attachments')
+        $attachments = table('email.attachments')
             ->where('email_id', $data['id'])
             ->get();
 
@@ -181,7 +181,7 @@ class EmailQueue
      */
     private function markAsProcessing(int $emailId): void
     {
-        table('emails_queue')
+        table('email.queue')
             ->where('id', $emailId)
             ->update([
                 'status' => 'processing',
@@ -194,7 +194,7 @@ class EmailQueue
      */
     private function scheduleRetry(int $emailId, int $attempts, int $delay): void
     {
-        table('emails_queue')
+        table('email.queue')
             ->where('id', $emailId)
             ->update([
                 'status' => 'pending',
@@ -209,7 +209,7 @@ class EmailQueue
      */
     private function markAsFailed(int $emailId, string $error): void
     {
-        table('emails_queue')
+        table('email.queue')
             ->where('id', $emailId)
             ->update([
                 'status' => 'failed',
@@ -232,7 +232,7 @@ class EmailQueue
      */
     public function depth(): int
     {
-        return table('emails_queue')
+        return table('email.queue')
             ->where('status', 'pending')
             ->where(function($query) {
                 $query->whereNull('scheduled_at')
@@ -248,7 +248,7 @@ class EmailQueue
     {
         $date = date('Y-m-d H:i:s', strtotime("-{$days} days"));
 
-        return table('emails_queue')
+        return table('email.queue')
             ->where('status', 'sent')
             ->where('created_at', '<', $date)
             ->delete();

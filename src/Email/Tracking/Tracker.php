@@ -102,7 +102,7 @@ class Tracker
      */
     private function getOrCreatePixelToken(int $emailId): string
     {
-        $existing = table('email_tracking_pixels')
+        $existing = table('email.tracking_pixels')
             ->where('email_id', $emailId)
             ->first();
 
@@ -112,7 +112,7 @@ class Tracker
 
         $token = hash('sha256', $emailId . microtime() . random_bytes(16));
 
-        table('email_tracking_pixels')->insert([
+        table('email.tracking_pixels')->insert([
             'email_id' => $emailId,
             'pixel_token' => $token,
             'created_at' => date('Y-m-d H:i:s'),
@@ -128,7 +128,7 @@ class Tracker
     {
         $token = hash('sha256', $emailId . $originalUrl . microtime() . random_bytes(16));
 
-        table('email_link_tracking')->insert([
+        table('email.link_tracking')->insert([
             'email_id' => $emailId,
             'original_url' => $originalUrl,
             'tracking_token' => $token,
@@ -145,7 +145,7 @@ class Tracker
      */
     public function trackSent(int $emailId): void
     {
-        table('email_tracking')->insert([
+        table('email.tracking')->insert([
             'email_id' => $emailId,
             'event_type' => 'sent',
             'tracked_at' => date('Y-m-d H:i:s'),
@@ -157,7 +157,7 @@ class Tracker
      */
     public function trackOpen(string $pixelToken): bool
     {
-        $pixel = table('email_tracking_pixels')
+        $pixel = table('email.tracking_pixels')
             ->where('pixel_token', $pixelToken)
             ->first();
 
@@ -169,7 +169,7 @@ class Tracker
         $ip = $_SERVER['REMOTE_ADDR'] ?? null;
 
         // Check if already tracked recently (prevent duplicates)
-        $recent = table('email_tracking')
+        $recent = table('email.tracking')
             ->where('email_id', $emailId)
             ->where('event_type', 'opened')
             ->where('ip_address', $ip)
@@ -180,7 +180,7 @@ class Tracker
             return false;
         }
 
-        table('email_tracking')->insert([
+        table('email.tracking')->insert([
             'email_id' => $emailId,
             'event_type' => 'opened',
             'ip_address' => $ip,
@@ -196,7 +196,7 @@ class Tracker
      */
     public function trackClick(string $trackingToken): ?string
     {
-        $link = table('email_link_tracking')
+        $link = table('email.link_tracking')
             ->where('tracking_token', $trackingToken)
             ->first();
 
@@ -205,7 +205,7 @@ class Tracker
         }
 
         // Increment click count
-        table('email_link_tracking')
+        table('email.link_tracking')
             ->where('id', $link['id'])
             ->update([
                 'click_count' => $link['click_count'] + 1,
@@ -213,13 +213,13 @@ class Tracker
             ]);
 
         if (!$link['first_clicked_at']) {
-            table('email_link_tracking')
+            table('email.link_tracking')
                 ->where('id', $link['id'])
                 ->update(['first_clicked_at' => date('Y-m-d H:i:s')]);
         }
 
         // Track event
-        table('email_tracking')->insert([
+        table('email.tracking')->insert([
             'email_id' => $link['email_id'],
             'event_type' => 'clicked',
             'event_data' => json_encode(['url' => $link['original_url']]),
@@ -251,7 +251,7 @@ class Tracker
      */
     private function countEvents(int $emailId, string $eventType): int
     {
-        return table('email_tracking')
+        return table('email.tracking')
             ->where('email_id', $emailId)
             ->where('event_type', $eventType)
             ->count();

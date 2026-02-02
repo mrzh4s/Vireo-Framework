@@ -42,7 +42,7 @@ class DatabaseCache implements CacheInterface
     public function __construct(array $config)
     {
         $connection = $config['connection'] ?? 'app';
-        $this->table = $config['table'] ?? 'cache';
+        $this->table = $config['table'] ?? 'system.cache';
         $this->prefix = $config['prefix'] ?? '';
         $this->defaultTtl = $config['ttl'] ?? 3600;
 
