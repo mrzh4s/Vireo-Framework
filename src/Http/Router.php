@@ -96,19 +96,55 @@ class Router
     }
 
     /**
-     * Auto-bind repository interfaces to implementations
+     * Auto-bind repository interfaces to implementations (lazy loading)
+     * Discovers interfaces in Features/{Feature}/Shared/Ports/ and registers factories for lazy loading
      */
     private function autoBindRepositories()
     {
-        // Common patterns for repository bindings
-        $patterns = [
-            'Features\Auth\Shared\Ports\UserRepositoryInterface' => 'Features\Auth\Shared\Adapters\PgUserRepository',
-        ];
+        $featuresPath = ROOT_PATH . '/Features';
 
-        foreach ($patterns as $interface => $implementation) {
-            if (interface_exists($interface) && class_exists($implementation)) {
-                $this->bind($interface, $implementation);
+        if (!is_dir($featuresPath)) {
+            return;
+        }
+
+        // Find all RepositoryInterface files
+        $interfaceFiles = glob($featuresPath . '/*/Shared/Ports/*RepositoryInterface.php');
+
+        foreach ($interfaceFiles as $interfaceFile) {
+            // Extract the interface name (e.g., UserRepositoryInterface)
+            $interfaceName = basename($interfaceFile, '.php');
+
+            // Extract the repository name (e.g., User from UserRepositoryInterface)
+            $repoName = str_replace('RepositoryInterface', '', $interfaceName);
+
+            // Build the implementation file path (e.g., PgUserRepository.php)
+            $implementationFile = str_replace(
+                ['/Ports/', 'RepositoryInterface.php'],
+                ['/Adapters/', 'Repository.php'],
+                $interfaceFile
+            );
+            $implementationFile = str_replace('/Adapters/' . $repoName, '/Adapters/Pg' . $repoName, $implementationFile);
+
+            if (!file_exists($implementationFile)) {
+                continue;
             }
+
+            // Get namespaces from files (only reads first few lines, doesn't execute)
+            $interfaceNamespace = $this->getNamespaceFromPath($interfaceFile);
+            $implementationNamespace = $this->getNamespaceFromPath($implementationFile);
+
+            $fullInterface = $interfaceNamespace . '\\' . $interfaceName;
+            $fullImplementation = $implementationNamespace . '\\Pg' . $repoName . 'Repository';
+
+            // Register a lazy factory - files are only loaded when the interface is actually needed
+            $intFile = $interfaceFile;
+            $implFile = $implementationFile;
+            $implClass = $fullImplementation;
+            $this->factories[$fullInterface] = function() use ($intFile, $implFile, $implClass) {
+                require_once $intFile;
+                require_once $implFile;
+                return $this->resolveClass($implClass);
+            };
         }
     }
 
@@ -902,6 +938,14 @@ class Router
         // Check if already instantiated as singleton
         if (isset($this->singletons[$className])) {
             return $this->singletons[$className];
+        }
+
+        // Try to load the class file if not already loaded
+        if (!class_exists($className, false)) {
+            $filePath = ROOT_PATH . '/' . str_replace('\\', '/', $className) . '.php';
+            if (file_exists($filePath)) {
+                require_once $filePath;
+            }
         }
 
         $reflector = new \ReflectionClass($className);
